@@ -5,13 +5,14 @@
  */
 package web;
 
-import WebService.WSPrescrizioneMedica_Service;
+import WebService.WSPaziente_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
 
 /**
@@ -20,8 +21,8 @@ import javax.xml.ws.WebServiceRef;
  */
 public class FarmaciaServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl")
-    private WSPrescrizioneMedica_Service service;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSPaziente/WSPaziente.wsdl")
+    private WSPaziente_Service service;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,8 +38,17 @@ public class FarmaciaServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
-
-            out.println(count());
+            HttpSession s = request.getSession();
+            if (request.getParameter("action").equals("findCF")) {
+                String cf = request.getParameter("cf");
+                boolean risp = verificaCF(cf);
+                if (risp == true) {
+                    response.sendRedirect("prescrizioni.jsp");
+                } else {
+                    s.setAttribute("error", "CF cliente non valido.");
+                    response.sendRedirect("errore.jsp");
+                }
+            }
         }
     }
 
@@ -81,11 +91,11 @@ public class FarmaciaServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private int count() {
+    private boolean verificaCF(java.lang.String cf) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        WebService.WSPrescrizioneMedica port = service.getWSPrescrizioneMedicaPort();
-        return port.count();
+        WebService.WSPaziente port = service.getWSPazientePort();
+        return port.verificaCF(cf);
     }
 
 }

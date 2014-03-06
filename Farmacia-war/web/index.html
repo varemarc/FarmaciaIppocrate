@@ -30,16 +30,38 @@ and open the template in the editor.
                         <li class="active"><a href="index.html">Home</a></li>
                         <li><a href="#">Altro</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+<!--                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="login.jsp">Logout</a></li>
-                    </ul>
+                    </ul>-->
                 </div><!--/.nav-collapse -->
             </div>
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <h1>Portale Farmacia</h1>
-                <p><small>Benvenuto sul portale Farmacia, vai a 
-                        <a href="FarmaciaServlet">FarmaciaServlet</a></small></p>
+                <p>Benvenuto sul portale Farmacia, inserendo il codice fiscale 
+                    del cliente puoi visualizzare le sue prescrizioni mediche.</p>
+            </div>
+            <div class="page-header">
+                <h1>Nuovo cliente</h1>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Visualizza prescrizioni mediche</h3>
+                    </div>
+                    <div class="panel-body">
+                        <br>
+                        <form class="form-inline" action="FarmaciaServlet?action=findCF" role="form" method="POST" style="text-align: center;">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="cf" placeholder="inserisci CF cliente" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default btn-primary">Visualizza</button>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div> <!-- /container -->
         <!-- Bootstrap core JavaScript

@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-WSPrescrizioneMedica" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica" destdir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSPrescrizioneMedica/wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?wsdl" xnocompile="true" xendorsed="true" package="WebService">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WSPrescrizioneMedica/wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica"/>
+    <target name="wsimport-client-WSPaziente" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WSPaziente"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WSPaziente" destdir="${build.generated.dir}/jax-wsCache/WSPaziente" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WSPaziente/wsdl/localhost_8080/WSPaziente/WSPaziente.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSPaziente/WSPaziente?wsdl" xnocompile="true" xendorsed="true" package="WebService">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WSPaziente/wsdl/localhost_8080/WSPaziente/WSPaziente.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WSPaziente"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WSPaziente">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-WSPrescrizioneMedica" depends="-init-project">
+    <target name="wsimport-client-clean-WSPaziente" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/WebService"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/WSPrescrizioneMedica"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WSPaziente"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-WSPrescrizioneMedica"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-WSPaziente"/>
 </project>

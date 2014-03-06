@@ -37,6 +37,12 @@
 <message name="findRangeResponse">
 <part name="parameters" element="tns:findRangeResponse"/>
 </message>
+<message name="getMieiMedicinali">
+<part name="parameters" element="tns:getMieiMedicinali"/>
+</message>
+<message name="getMieiMedicinaliResponse">
+<part name="parameters" element="tns:getMieiMedicinaliResponse"/>
+</message>
 <portType name="WSPrescrizioneMedica">
 <operation name="remove">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/remove" message="tns:remove"/>
@@ -62,6 +68,10 @@
 <operation name="findRange">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findRangeRequest" message="tns:findRange"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/findRangeResponse" message="tns:findRangeResponse"/>
+</operation>
+<operation name="getMieiMedicinali">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/getMieiMedicinaliRequest" message="tns:getMieiMedicinali"/>
+<output wsam:Action="http://WebService/WSPrescrizioneMedica/getMieiMedicinaliResponse" message="tns:getMieiMedicinaliResponse"/>
 </operation>
 </portType>
 <binding name="WSPrescrizioneMedicaPortBinding" type="tns:WSPrescrizioneMedica">
@@ -112,6 +122,15 @@
 </input>
 </operation>
 <operation name="findRange">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getMieiMedicinali">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

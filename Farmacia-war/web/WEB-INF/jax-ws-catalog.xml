@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?wsdl" uri="wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl"/>
     <system systemId="http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?xsd=1" uri="wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSPaziente/WSPaziente?wsdl" uri="wsdl/localhost_8080/WSPaziente/WSPaziente.wsdl"/>
+    <system systemId="http://localhost:8080/WSPaziente/WSPaziente?xsd=1" uri="wsdl/localhost_8080/WSPaziente/WSPaziente.xsd_1.xsd"/>
 </catalog>

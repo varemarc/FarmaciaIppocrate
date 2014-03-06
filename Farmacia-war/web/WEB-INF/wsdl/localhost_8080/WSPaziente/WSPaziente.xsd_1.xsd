@@ -22,13 +22,68 @@
 
 <xs:element name="remove" type="tns:remove"/>
 
+<xs:element name="verificaCF" type="tns:verificaCF"/>
+
+<xs:element name="verificaCFResponse" type="tns:verificaCFResponse"/>
+
+<xs:complexType name="verificaCF">
+<xs:sequence>
+<xs:element name="CF" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificaCFResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="findAll">
 <xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="findAllResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:paziente" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paziente">
+<xs:sequence>
+<xs:element name="cartella_clinica" type="tns:cartellaClinica" minOccurs="0"/>
+<xs:element name="cf" type="xs:string" minOccurs="0"/>
+<xs:element name="cognome" type="xs:string" minOccurs="0"/>
+<xs:element name="data_nascita" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="indirizzo" type="xs:string" minOccurs="0"/>
+<xs:element name="luogo_nascita" type="xs:string" minOccurs="0"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="reparto_ricoverato" type="tns:reparto" minOccurs="0"/>
+<xs:element name="sesso" type="xs:string" minOccurs="0"/>
+<xs:element name="studioMedico" type="tns:studioMedico" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cartellaClinica">
+<xs:sequence>
+<xs:element name="anamnesi" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="lista_referti" type="tns:refertoMedico" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="refertoMedico">
+<xs:sequence>
+<xs:element name="dataVisita" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="diagnosi" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="lista_images" type="xs:string" minOccurs="0"/>
+<xs:element name="lista_prescrizioni" type="tns:prescrizioneMedica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="medico" type="tns:medico" minOccurs="0"/>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
+<xs:element name="tipoVisita" type="tns:prestazione" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -88,45 +143,6 @@
 <xs:element name="nome_utente" type="xs:string" minOccurs="0"/>
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="secret_key" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="paziente">
-<xs:sequence>
-<xs:element name="cartella_clinica" type="tns:cartellaClinica" minOccurs="0"/>
-<xs:element name="cf" type="xs:string" minOccurs="0"/>
-<xs:element name="cognome" type="xs:string" minOccurs="0"/>
-<xs:element name="data_nascita" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="indirizzo" type="xs:string" minOccurs="0"/>
-<xs:element name="luogo_nascita" type="xs:string" minOccurs="0"/>
-<xs:element name="nome" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="reparto_ricoverato" type="tns:reparto" minOccurs="0"/>
-<xs:element name="sesso" type="xs:string" minOccurs="0"/>
-<xs:element name="studioMedico" type="tns:studioMedico" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="cartellaClinica">
-<xs:sequence>
-<xs:element name="anamnesi" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="lista_referti" type="tns:refertoMedico" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="refertoMedico">
-<xs:sequence>
-<xs:element name="dataVisita" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="diagnosi" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="lista_images" type="xs:string" minOccurs="0"/>
-<xs:element name="lista_prescrizioni" type="tns:prescrizioneMedica" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="medico" type="tns:medico" minOccurs="0"/>
-<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
-<xs:element name="tipoVisita" type="tns:prestazione" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -227,7 +243,13 @@
 
 <xs:complexType name="remove">
 <xs:sequence>
-<xs:element name="prescrizioneMedica" type="tns:prescrizioneMedica" minOccurs="0"/>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="edit">
+<xs:sequence>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -239,7 +261,7 @@
 
 <xs:complexType name="findRangeResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:paziente" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -251,19 +273,13 @@
 
 <xs:complexType name="findResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0"/>
+<xs:element name="return" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="create">
 <xs:sequence>
-<xs:element name="prescrizioneMedica" type="tns:prescrizioneMedica" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="edit">
-<xs:sequence>
-<xs:element name="prescrizioneMedica" type="tns:prescrizioneMedica" minOccurs="0"/>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

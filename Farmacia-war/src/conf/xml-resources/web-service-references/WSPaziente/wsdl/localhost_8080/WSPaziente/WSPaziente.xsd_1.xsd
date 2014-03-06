@@ -34,7 +34,7 @@
 
 <xs:complexType name="verificaCFResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:boolean"/>
+<xs:element name="return" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

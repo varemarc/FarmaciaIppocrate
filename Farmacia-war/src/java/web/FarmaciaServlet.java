@@ -41,8 +41,8 @@ public class FarmaciaServlet extends HttpServlet {
             HttpSession s = request.getSession();
             if (request.getParameter("action").equals("findCF")) {
                 String cf = request.getParameter("cf");
-                boolean risp = verificaCF(cf);
-                if (risp == true) {
+                Long id = verificaCF(cf);
+                if (id.equals(new Long(-1)) == false) {
                     response.sendRedirect("prescrizioni.jsp");
                 } else {
                     s.setAttribute("error", "CF cliente non valido.");
@@ -91,7 +91,7 @@ public class FarmaciaServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private boolean verificaCF(java.lang.String cf) {
+    private Long verificaCF(java.lang.String cf) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         WebService.WSPaziente port = service.getWSPazientePort();

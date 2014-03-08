@@ -91,7 +91,8 @@
                             <td><%= prescrizioni.get(i).getMedicinale()%></td>
                             <td><%= prescrizioni.get(i).getNumConfezioni()%></td>
                             <td>
-                                <form class="form-inline" action="FarmaciaServlet?action=segnaConsegnata_<%=i%>" role="form" method="POST"><%= prescrizioni.get(i).getConsegnata()%>
+                                <form class="form-inline" action="FarmaciaServlet?action=segnaConsegnata_<%=i%>" role="form" method="POST">
+                                    <%= prescrizioni.get(i).getConsegnata()%>
                                     <% if (prescrizioni.get(i).getConsegnata().equals("no")) {%>
                                     &nbsp
                                     <button type="submit" class="btn btn-primary btn-xs" title="Consegna">

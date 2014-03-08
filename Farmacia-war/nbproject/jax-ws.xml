@@ -5,7 +5,7 @@
     <client name="WSPaziente">
       <wsdl-url>http://localhost:8080/WSPaziente/WSPaziente?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8080/WSPaziente/WSPaziente.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">WebService</package-name>
+      <package-name forceReplace="true">WSPaziente</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -34,7 +34,43 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>WebService</wsimport-option-value>
+          <wsimport-option-value>WSPaziente</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="WSPrescrizioneMedica">
+      <wsdl-url>http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">WSPrescrizioneMedica</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>WSPrescrizioneMedica</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

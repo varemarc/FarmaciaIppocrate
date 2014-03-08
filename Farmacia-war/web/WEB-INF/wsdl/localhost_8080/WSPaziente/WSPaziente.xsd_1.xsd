@@ -20,6 +20,10 @@
 
 <xs:element name="findResponse" type="tns:findResponse"/>
 
+<xs:element name="getPazienteTransient" type="tns:getPazienteTransient"/>
+
+<xs:element name="getPazienteTransientResponse" type="tns:getPazienteTransientResponse"/>
+
 <xs:element name="remove" type="tns:remove"/>
 
 <xs:element name="verificaCF" type="tns:verificaCF"/>
@@ -38,13 +42,9 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAll">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findAllResponse">
+<xs:complexType name="remove">
 <xs:sequence>
-<xs:element name="return" type="tns:paziente" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -231,23 +231,13 @@
 </xs:complexContent>
 </xs:complexType>
 
-<xs:complexType name="count">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="countResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="remove">
+<xs:complexType name="edit">
 <xs:sequence>
 <xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="edit">
+<xs:complexType name="create">
 <xs:sequence>
 <xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
@@ -265,6 +255,51 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getPazienteTransient">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPazienteTransientResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pazienteTransient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pazienteTransient">
+<xs:sequence>
+<xs:element name="cf" type="xs:string" minOccurs="0"/>
+<xs:element name="cognome" type="xs:string" minOccurs="0"/>
+<xs:element name="data_nascita" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="indirizzo" type="xs:string" minOccurs="0"/>
+<xs:element name="luogo_nascita" type="xs:string" minOccurs="0"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+<xs:element name="sesso" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="count">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="countResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:paziente" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="find">
 <xs:sequence>
 <xs:element name="id" type="xs:anyType" minOccurs="0"/>
@@ -274,12 +309,6 @@
 <xs:complexType name="findResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:paziente" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="create">
-<xs:sequence>
-<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

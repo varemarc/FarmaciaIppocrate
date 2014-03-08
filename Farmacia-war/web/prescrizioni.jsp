@@ -4,6 +4,10 @@
     Author     : Marco
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<jsp:useBean id="paziente" class="WSPaziente.PazienteTransient" scope="session" />
+<% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
@@ -43,9 +47,30 @@
                     del cliente.</p>
             </div>
             <div class="page-header">
-                <h1>Prescrizioni mediche di ....</h1>
+                <h1>Prescrizioni mediche di <%= paziente.getNome() + " " + paziente.getCognome() %></h1>
             </div>
-            contenutoooooo
+            <div class="panel panel-primary">
+                <div class="panel-heading">Informazioni cliente</div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>Nome</dt>
+                        <dd><%= paziente.getNome()%></dd>
+                        <dt>Cognome</dt>
+                        <dd><%= paziente.getCognome()%></dd>
+                        <dt>CF</dt>
+                        <dd><%= paziente.getCf()%></dd>
+                        <dt>Sesso</dt>
+                        <dd><%= paziente.getSesso()%></dd>
+                        <dt>Data nascita</dt>
+                        <dd><%= sdf.format(paziente.getDataNascita().toGregorianCalendar().getTime()) %></dd>
+                        <dt>Luogo nascita</dt>
+                        <dd><%= paziente.getLuogoNascita()%></dd>
+                        <dt>Indirizzo</dt>
+                        <dd><%= paziente.getIndirizzo()%></dd>
+                    </dl>
+                </div>
+            </div>
+                    tabella prescrizioni
         </div> <!-- /container -->
         <!-- Bootstrap core JavaScript
         ================================================== -->

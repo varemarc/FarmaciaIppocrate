@@ -4,32 +4,17 @@
 <xsd:import namespace="http://WebService/" schemaLocation="http://localhost:8080/WSPaziente/WSPaziente?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="remove">
-<part name="parameters" element="tns:remove"/>
+<message name="verificaCF">
+<part name="parameters" element="tns:verificaCF"/>
 </message>
-<message name="count">
-<part name="parameters" element="tns:count"/>
+<message name="verificaCFResponse">
+<part name="parameters" element="tns:verificaCFResponse"/>
 </message>
-<message name="countResponse">
-<part name="parameters" element="tns:countResponse"/>
+<message name="getPazienteTransient">
+<part name="parameters" element="tns:getPazienteTransient"/>
 </message>
-<message name="find">
-<part name="parameters" element="tns:find"/>
-</message>
-<message name="findResponse">
-<part name="parameters" element="tns:findResponse"/>
-</message>
-<message name="create">
-<part name="parameters" element="tns:create"/>
-</message>
-<message name="findAll">
-<part name="parameters" element="tns:findAll"/>
-</message>
-<message name="findAllResponse">
-<part name="parameters" element="tns:findAllResponse"/>
-</message>
-<message name="edit">
-<part name="parameters" element="tns:edit"/>
+<message name="getPazienteTransientResponse">
+<part name="parameters" element="tns:getPazienteTransientResponse"/>
 </message>
 <message name="findRange">
 <part name="parameters" element="tns:findRange"/>
@@ -37,52 +22,71 @@
 <message name="findRangeResponse">
 <part name="parameters" element="tns:findRangeResponse"/>
 </message>
-<message name="verificaCF">
-<part name="parameters" element="tns:verificaCF"/>
+<message name="create">
+<part name="parameters" element="tns:create"/>
 </message>
-<message name="verificaCFResponse">
-<part name="parameters" element="tns:verificaCFResponse"/>
+<message name="remove">
+<part name="parameters" element="tns:remove"/>
+</message>
+<message name="find">
+<part name="parameters" element="tns:find"/>
+</message>
+<message name="findResponse">
+<part name="parameters" element="tns:findResponse"/>
+</message>
+<message name="findAll">
+<part name="parameters" element="tns:findAll"/>
+</message>
+<message name="findAllResponse">
+<part name="parameters" element="tns:findAllResponse"/>
+</message>
+<message name="count">
+<part name="parameters" element="tns:count"/>
+</message>
+<message name="countResponse">
+<part name="parameters" element="tns:countResponse"/>
+</message>
+<message name="edit">
+<part name="parameters" element="tns:edit"/>
 </message>
 <portType name="WSPaziente">
-<operation name="remove">
-<input wsam:Action="http://WebService/WSPaziente/remove" message="tns:remove"/>
+<operation name="verificaCF">
+<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
+<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
 </operation>
-<operation name="count">
-<input wsam:Action="http://WebService/WSPaziente/countRequest" message="tns:count"/>
-<output wsam:Action="http://WebService/WSPaziente/countResponse" message="tns:countResponse"/>
-</operation>
-<operation name="find">
-<input wsam:Action="http://WebService/WSPaziente/findRequest" message="tns:find"/>
-<output wsam:Action="http://WebService/WSPaziente/findResponse" message="tns:findResponse"/>
-</operation>
-<operation name="create">
-<input wsam:Action="http://WebService/WSPaziente/create" message="tns:create"/>
-</operation>
-<operation name="findAll">
-<input wsam:Action="http://WebService/WSPaziente/findAllRequest" message="tns:findAll"/>
-<output wsam:Action="http://WebService/WSPaziente/findAllResponse" message="tns:findAllResponse"/>
-</operation>
-<operation name="edit">
-<input wsam:Action="http://WebService/WSPaziente/edit" message="tns:edit"/>
+<operation name="getPazienteTransient">
+<input wsam:Action="http://WebService/WSPaziente/getPazienteTransientRequest" message="tns:getPazienteTransient"/>
+<output wsam:Action="http://WebService/WSPaziente/getPazienteTransientResponse" message="tns:getPazienteTransientResponse"/>
 </operation>
 <operation name="findRange">
 <input wsam:Action="http://WebService/WSPaziente/findRangeRequest" message="tns:findRange"/>
 <output wsam:Action="http://WebService/WSPaziente/findRangeResponse" message="tns:findRangeResponse"/>
 </operation>
-<operation name="verificaCF">
-<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
-<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
+<operation name="create">
+<input wsam:Action="http://WebService/WSPaziente/create" message="tns:create"/>
+</operation>
+<operation name="remove">
+<input wsam:Action="http://WebService/WSPaziente/remove" message="tns:remove"/>
+</operation>
+<operation name="find">
+<input wsam:Action="http://WebService/WSPaziente/findRequest" message="tns:find"/>
+<output wsam:Action="http://WebService/WSPaziente/findResponse" message="tns:findResponse"/>
+</operation>
+<operation name="findAll">
+<input wsam:Action="http://WebService/WSPaziente/findAllRequest" message="tns:findAll"/>
+<output wsam:Action="http://WebService/WSPaziente/findAllResponse" message="tns:findAllResponse"/>
+</operation>
+<operation name="count">
+<input wsam:Action="http://WebService/WSPaziente/countRequest" message="tns:count"/>
+<output wsam:Action="http://WebService/WSPaziente/countResponse" message="tns:countResponse"/>
+</operation>
+<operation name="edit">
+<input wsam:Action="http://WebService/WSPaziente/edit" message="tns:edit"/>
 </operation>
 </portType>
 <binding name="WSPazientePortBinding" type="tns:WSPaziente">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="remove">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="count">
+<operation name="verificaCF">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -91,7 +95,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="find">
+<operation name="getPazienteTransient">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="findRange">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -106,7 +119,31 @@
 <soap:body use="literal"/>
 </input>
 </operation>
+<operation name="remove">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="find">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="findAll">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="count">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -120,24 +157,6 @@
 <input>
 <soap:body use="literal"/>
 </input>
-</operation>
-<operation name="findRange">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="verificaCF">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
 </operation>
 </binding>
 <service name="WSPaziente">

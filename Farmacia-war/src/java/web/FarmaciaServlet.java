@@ -5,9 +5,13 @@
  */
 package web;
 
-import WebService.WSPaziente_Service;
+import WSPaziente.PazienteTransient;
+import WSPaziente.WSPaziente_Service;
+import WSPrescrizioneMedica.PrescrizioneMedicaTransient;
+import WSPrescrizioneMedica.WSPrescrizioneMedica_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +24,9 @@ import javax.xml.ws.WebServiceRef;
  * @author Marco
  */
 public class FarmaciaServlet extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSPrescrizioneMedica/WSPrescrizioneMedica.wsdl")
+    private WSPrescrizioneMedica_Service service_1;
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSPaziente/WSPaziente.wsdl")
     private WSPaziente_Service service;
@@ -43,6 +50,10 @@ public class FarmaciaServlet extends HttpServlet {
                 String cf = request.getParameter("cf");
                 Long id = verificaCF(cf);
                 if (id.equals(new Long(-1)) == false) {
+                    PazienteTransient pt = getPazienteTransient(id);
+                    List<PrescrizioneMedicaTransient> lpmt = getPMTransient(id);
+                    s.setAttribute("paziente", pt);
+                    s.setAttribute("prescrizioni", lpmt);
                     response.sendRedirect("prescrizioni.jsp");
                 } else {
                     s.setAttribute("error", "CF cliente non valido.");
@@ -94,8 +105,22 @@ public class FarmaciaServlet extends HttpServlet {
     private Long verificaCF(java.lang.String cf) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        WebService.WSPaziente port = service.getWSPazientePort();
+        WSPaziente.WSPaziente port = service.getWSPazientePort();
         return port.verificaCF(cf);
+    }
+
+    private PazienteTransient getPazienteTransient(java.lang.Long id) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        WSPaziente.WSPaziente port = service.getWSPazientePort();
+        return port.getPazienteTransient(id);
+    }
+
+    private java.util.List<WSPrescrizioneMedica.PrescrizioneMedicaTransient> getPMTransient(java.lang.Long idPaziente) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        WSPrescrizioneMedica.WSPrescrizioneMedica port = service_1.getWSPrescrizioneMedicaPort();
+        return port.getPMTransient(idPaziente);
     }
 
 }

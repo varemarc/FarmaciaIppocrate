@@ -26,6 +26,10 @@
 
 <xs:element name="remove" type="tns:remove"/>
 
+<xs:element name="segnaConsegnata" type="tns:segnaConsegnata"/>
+
+<xs:element name="segnaConsegnataResponse" type="tns:segnaConsegnataResponse"/>
+
 <xs:complexType name="findAll">
 <xs:sequence/>
 </xs:complexType>
@@ -231,6 +235,29 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="segnaConsegnata">
+<xs:sequence>
+<xs:element name="idPM" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="segnaConsegnataResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:prescrizioneMedicaTransient" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="prescrizioneMedicaTransient">
+<xs:sequence>
+<xs:element name="consegnata" type="xs:string" minOccurs="0"/>
+<xs:element name="dataPrescrizione" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="dataScadenza" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+<xs:element name="medicinale" type="xs:string" minOccurs="0"/>
+<xs:element name="numConfezioni" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="count">
 <xs:sequence/>
 </xs:complexType>
@@ -268,17 +295,6 @@
 <xs:complexType name="getPMTransientResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:prescrizioneMedicaTransient" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="prescrizioneMedicaTransient">
-<xs:sequence>
-<xs:element name="consegnata" type="xs:string" minOccurs="0"/>
-<xs:element name="dataPrescrizione" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="dataScadenza" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="medicinale" type="xs:string" minOccurs="0"/>
-<xs:element name="numConfezioni" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 

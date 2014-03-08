@@ -4,8 +4,11 @@
     Author     : Marco
 --%>
 
+<%@page import="WSPrescrizioneMedica.PrescrizioneMedicaTransient"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <jsp:useBean id="paziente" class="WSPaziente.PazienteTransient" scope="session" />
+<jsp:useBean id="prescrizioni" class="List<PrescrizioneMedicaTransient>" scope="session" />
 <% SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -34,11 +37,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="#">Altro</a></li>
                     </ul>
-<!--                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.jsp">Logout</a></li>
-                    </ul>-->
                 </div><!--/.nav-collapse -->
             </div>
             <!-- Main component for a primary marketing message or call to action -->
@@ -47,7 +46,7 @@
                     del cliente.</p>
             </div>
             <div class="page-header">
-                <h1>Prescrizioni mediche di <%= paziente.getNome() + " " + paziente.getCognome() %></h1>
+                <h1>Prescrizioni mediche di <%= paziente.getNome() + " " + paziente.getCognome()%></h1>
             </div>
             <div class="panel panel-primary">
                 <div class="panel-heading">Informazioni cliente</div>
@@ -62,7 +61,7 @@
                         <dt>Sesso</dt>
                         <dd><%= paziente.getSesso()%></dd>
                         <dt>Data nascita</dt>
-                        <dd><%= sdf.format(paziente.getDataNascita().toGregorianCalendar().getTime()) %></dd>
+                        <dd><%= sdf.format(paziente.getDataNascita().toGregorianCalendar().getTime())%></dd>
                         <dt>Luogo nascita</dt>
                         <dd><%= paziente.getLuogoNascita()%></dd>
                         <dt>Indirizzo</dt>
@@ -70,7 +69,42 @@
                     </dl>
                 </div>
             </div>
-                    tabella prescrizioni
+            <div class="panel panel-primary">
+                <div class="panel-heading">Prescrizioni mediche</div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Data prescrizione</th>
+                            <th>Data scadenza prescrizione</th>
+                            <th>Medicinale</th>
+                            <th>Quantità</th>
+                            <th>Consegnata</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (int i = 0; i < prescrizioni.size(); i++) {%>
+                        <tr>
+                            <td><%= i + 1%></td>
+                            <td><%= sdf.format(prescrizioni.get(i).getDataPrescrizione().toGregorianCalendar().getTime())%></td>
+                            <td><%= sdf.format(prescrizioni.get(i).getDataScadenza().toGregorianCalendar().getTime())%></td>
+                            <td><%= prescrizioni.get(i).getMedicinale()%></td>
+                            <td><%= prescrizioni.get(i).getNumConfezioni()%></td>
+                            <td>
+                                <form class="form-inline" action="FarmaciaServlet?action=segnaConsegnata_<%=i%>" role="form" method="POST"><%= prescrizioni.get(i).getConsegnata()%>
+                                    <% if (prescrizioni.get(i).getConsegnata().equals("no")) {%>
+                                    &nbsp
+                                    <button type="submit" class="btn btn-primary btn-xs" title="Consegna">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <%}%>
+                                </form>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
         </div> <!-- /container -->
         <!-- Bootstrap core JavaScript
         ================================================== -->

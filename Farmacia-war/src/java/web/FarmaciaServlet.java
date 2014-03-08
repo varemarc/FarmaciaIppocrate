@@ -59,6 +59,14 @@ public class FarmaciaServlet extends HttpServlet {
                     s.setAttribute("error", "CF cliente non valido.");
                     response.sendRedirect("errore.jsp");
                 }
+            } else if (request.getParameter("action").startsWith("segnaConsegnata_")) {
+                int iPM = Integer.parseInt(request.getParameter("action").substring(16));
+                List<PrescrizioneMedicaTransient> lpmtOLD = 
+                        (List<PrescrizioneMedicaTransient>) s.getAttribute("prescrizioni");
+                PrescrizioneMedicaTransient pmt = segnaConsegnata(lpmtOLD.get(iPM).getId());
+                lpmtOLD.set(iPM, pmt);
+                s.setAttribute("prescrizioni", lpmtOLD);
+                response.sendRedirect("prescrizioni.jsp");
             }
         }
     }
@@ -121,6 +129,13 @@ public class FarmaciaServlet extends HttpServlet {
         // If the calling of port operations may lead to race condition some synchronization is required.
         WSPrescrizioneMedica.WSPrescrizioneMedica port = service_1.getWSPrescrizioneMedicaPort();
         return port.getPMTransient(idPaziente);
+    }
+
+    private PrescrizioneMedicaTransient segnaConsegnata(java.lang.Long idPM) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        WSPrescrizioneMedica.WSPrescrizioneMedica port = service_1.getWSPrescrizioneMedicaPort();
+        return port.segnaConsegnata(idPM);
     }
 
 }

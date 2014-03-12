@@ -26,6 +26,10 @@
 
 <xs:element name="remove" type="tns:remove"/>
 
+<xs:element name="trovaPazienti" type="tns:trovaPazienti"/>
+
+<xs:element name="trovaPazientiResponse" type="tns:trovaPazientiResponse"/>
+
 <xs:element name="verificaCF" type="tns:verificaCF"/>
 
 <xs:element name="verificaCFResponse" type="tns:verificaCFResponse"/>
@@ -237,12 +241,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="create">
-<xs:sequence>
-<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="findRange">
 <xs:sequence>
 <xs:element name="range" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
@@ -252,6 +250,12 @@
 <xs:complexType name="findRangeResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:paziente" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="create">
+<xs:sequence>
+<xs:element name="paziente" type="tns:paziente" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -309,6 +313,18 @@
 <xs:complexType name="findResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:paziente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="trovaPazienti">
+<xs:sequence>
+<xs:element name="idM" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="trovaPazientiResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

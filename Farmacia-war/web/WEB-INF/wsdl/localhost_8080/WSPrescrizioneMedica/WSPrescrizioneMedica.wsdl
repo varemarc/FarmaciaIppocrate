@@ -16,26 +16,26 @@
 <message name="segnaConsegnataResponse">
 <part name="parameters" element="tns:segnaConsegnataResponse"/>
 </message>
-<message name="edit">
-<part name="parameters" element="tns:edit"/>
-</message>
-<message name="create">
-<part name="parameters" element="tns:create"/>
-</message>
 <message name="remove">
 <part name="parameters" element="tns:remove"/>
 </message>
-<message name="find">
-<part name="parameters" element="tns:find"/>
-</message>
-<message name="findResponse">
-<part name="parameters" element="tns:findResponse"/>
+<message name="edit">
+<part name="parameters" element="tns:edit"/>
 </message>
 <message name="findAll">
 <part name="parameters" element="tns:findAll"/>
 </message>
 <message name="findAllResponse">
 <part name="parameters" element="tns:findAllResponse"/>
+</message>
+<message name="create">
+<part name="parameters" element="tns:create"/>
+</message>
+<message name="find">
+<part name="parameters" element="tns:find"/>
+</message>
+<message name="findResponse">
+<part name="parameters" element="tns:findResponse"/>
 </message>
 <message name="findRange">
 <part name="parameters" element="tns:findRange"/>
@@ -58,22 +58,22 @@
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/segnaConsegnataRequest" message="tns:segnaConsegnata"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/segnaConsegnataResponse" message="tns:segnaConsegnataResponse"/>
 </operation>
-<operation name="edit">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/edit" message="tns:edit"/>
-</operation>
-<operation name="create">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/create" message="tns:create"/>
-</operation>
 <operation name="remove">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/remove" message="tns:remove"/>
 </operation>
-<operation name="find">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/findRequest" message="tns:find"/>
-<output wsam:Action="http://WebService/WSPrescrizioneMedica/findResponse" message="tns:findResponse"/>
+<operation name="edit">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/edit" message="tns:edit"/>
 </operation>
 <operation name="findAll">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findAllRequest" message="tns:findAll"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/findAllResponse" message="tns:findAllResponse"/>
+</operation>
+<operation name="create">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/create" message="tns:create"/>
+</operation>
+<operation name="find">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/findRequest" message="tns:find"/>
+<output wsam:Action="http://WebService/WSPrescrizioneMedica/findResponse" message="tns:findResponse"/>
 </operation>
 <operation name="findRange">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findRangeRequest" message="tns:findRange"/>
@@ -104,25 +104,19 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="edit">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
-<operation name="create">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
 <operation name="remove">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="find">
+<operation name="edit">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="findAll">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -131,7 +125,13 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findAll">
+<operation name="create">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+</operation>
+<operation name="find">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

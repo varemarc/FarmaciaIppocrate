@@ -4,12 +4,6 @@
 <xsd:import namespace="http://WebService/" schemaLocation="http://localhost:8080/WSPaziente/WSPaziente?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="verificaCF">
-<part name="parameters" element="tns:verificaCF"/>
-</message>
-<message name="verificaCFResponse">
-<part name="parameters" element="tns:verificaCFResponse"/>
-</message>
 <message name="getPazienteTransient">
 <part name="parameters" element="tns:getPazienteTransient"/>
 </message>
@@ -22,11 +16,11 @@
 <message name="trovaPazientiResponse">
 <part name="parameters" element="tns:trovaPazientiResponse"/>
 </message>
-<message name="edit">
-<part name="parameters" element="tns:edit"/>
-</message>
 <message name="create">
 <part name="parameters" element="tns:create"/>
+</message>
+<message name="edit">
+<part name="parameters" element="tns:edit"/>
 </message>
 <message name="remove">
 <part name="parameters" element="tns:remove"/>
@@ -55,11 +49,19 @@
 <message name="countResponse">
 <part name="parameters" element="tns:countResponse"/>
 </message>
+<message name="effettuaLogin">
+<part name="parameters" element="tns:effettuaLogin"/>
+</message>
+<message name="effettuaLoginResponse">
+<part name="parameters" element="tns:effettuaLoginResponse"/>
+</message>
+<message name="verificaCF">
+<part name="parameters" element="tns:verificaCF"/>
+</message>
+<message name="verificaCFResponse">
+<part name="parameters" element="tns:verificaCFResponse"/>
+</message>
 <portType name="WSPaziente">
-<operation name="verificaCF">
-<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
-<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
-</operation>
 <operation name="getPazienteTransient">
 <input wsam:Action="http://WebService/WSPaziente/getPazienteTransientRequest" message="tns:getPazienteTransient"/>
 <output wsam:Action="http://WebService/WSPaziente/getPazienteTransientResponse" message="tns:getPazienteTransientResponse"/>
@@ -68,11 +70,11 @@
 <input wsam:Action="http://WebService/WSPaziente/trovaPazientiRequest" message="tns:trovaPazienti"/>
 <output wsam:Action="http://WebService/WSPaziente/trovaPazientiResponse" message="tns:trovaPazientiResponse"/>
 </operation>
-<operation name="edit">
-<input wsam:Action="http://WebService/WSPaziente/edit" message="tns:edit"/>
-</operation>
 <operation name="create">
 <input wsam:Action="http://WebService/WSPaziente/create" message="tns:create"/>
+</operation>
+<operation name="edit">
+<input wsam:Action="http://WebService/WSPaziente/edit" message="tns:edit"/>
 </operation>
 <operation name="remove">
 <input wsam:Action="http://WebService/WSPaziente/remove" message="tns:remove"/>
@@ -93,18 +95,17 @@
 <input wsam:Action="http://WebService/WSPaziente/countRequest" message="tns:count"/>
 <output wsam:Action="http://WebService/WSPaziente/countResponse" message="tns:countResponse"/>
 </operation>
+<operation name="effettuaLogin">
+<input wsam:Action="http://WebService/WSPaziente/effettuaLoginRequest" message="tns:effettuaLogin"/>
+<output wsam:Action="http://WebService/WSPaziente/effettuaLoginResponse" message="tns:effettuaLoginResponse"/>
+</operation>
+<operation name="verificaCF">
+<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
+<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
+</operation>
 </portType>
 <binding name="WSPazientePortBinding" type="tns:WSPaziente">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="verificaCF">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="getPazienteTransient">
 <soap:operation soapAction=""/>
 <input>
@@ -123,13 +124,13 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="edit">
+<operation name="create">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="create">
+<operation name="edit">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -169,6 +170,24 @@
 </output>
 </operation>
 <operation name="count">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="effettuaLogin">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="verificaCF">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

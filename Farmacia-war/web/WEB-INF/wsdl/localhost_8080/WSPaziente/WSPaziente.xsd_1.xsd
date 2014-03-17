@@ -8,6 +8,10 @@
 
 <xs:element name="edit" type="tns:edit"/>
 
+<xs:element name="effettuaLogin" type="tns:effettuaLogin"/>
+
+<xs:element name="effettuaLoginResponse" type="tns:effettuaLoginResponse"/>
+
 <xs:element name="find" type="tns:find"/>
 
 <xs:element name="findAll" type="tns:findAll"/>
@@ -291,6 +295,20 @@
 <xs:complexType name="countResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="effettuaLogin">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="pincode" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="effettuaLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

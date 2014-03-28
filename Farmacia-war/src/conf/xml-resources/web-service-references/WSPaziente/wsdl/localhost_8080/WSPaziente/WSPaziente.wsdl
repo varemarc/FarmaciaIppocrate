@@ -10,11 +10,23 @@
 <message name="getPazienteTransientResponse">
 <part name="parameters" element="tns:getPazienteTransientResponse"/>
 </message>
-<message name="trovaPazienti">
-<part name="parameters" element="tns:trovaPazienti"/>
+<message name="verificaCF">
+<part name="parameters" element="tns:verificaCF"/>
 </message>
-<message name="trovaPazientiResponse">
-<part name="parameters" element="tns:trovaPazientiResponse"/>
+<message name="verificaCFResponse">
+<part name="parameters" element="tns:verificaCFResponse"/>
+</message>
+<message name="ottieniCC">
+<part name="parameters" element="tns:ottieniCC"/>
+</message>
+<message name="ottieniCCResponse">
+<part name="parameters" element="tns:ottieniCCResponse"/>
+</message>
+<message name="ottieniPM">
+<part name="parameters" element="tns:ottieniPM"/>
+</message>
+<message name="ottieniPMResponse">
+<part name="parameters" element="tns:ottieniPMResponse"/>
 </message>
 <message name="create">
 <part name="parameters" element="tns:create"/>
@@ -55,20 +67,34 @@
 <message name="effettuaLoginResponse">
 <part name="parameters" element="tns:effettuaLoginResponse"/>
 </message>
-<message name="verificaCF">
-<part name="parameters" element="tns:verificaCF"/>
+<message name="trovaPazienti">
+<part name="parameters" element="tns:trovaPazienti"/>
 </message>
-<message name="verificaCFResponse">
-<part name="parameters" element="tns:verificaCFResponse"/>
+<message name="trovaPazientiResponse">
+<part name="parameters" element="tns:trovaPazientiResponse"/>
+</message>
+<message name="ottieniMultimedia">
+<part name="parameters" element="tns:ottieniMultimedia"/>
+</message>
+<message name="ottieniMultimediaResponse">
+<part name="parameters" element="tns:ottieniMultimediaResponse"/>
 </message>
 <portType name="WSPaziente">
 <operation name="getPazienteTransient">
 <input wsam:Action="http://WebService/WSPaziente/getPazienteTransientRequest" message="tns:getPazienteTransient"/>
 <output wsam:Action="http://WebService/WSPaziente/getPazienteTransientResponse" message="tns:getPazienteTransientResponse"/>
 </operation>
-<operation name="trovaPazienti">
-<input wsam:Action="http://WebService/WSPaziente/trovaPazientiRequest" message="tns:trovaPazienti"/>
-<output wsam:Action="http://WebService/WSPaziente/trovaPazientiResponse" message="tns:trovaPazientiResponse"/>
+<operation name="verificaCF">
+<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
+<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
+</operation>
+<operation name="ottieniCC">
+<input wsam:Action="http://WebService/WSPaziente/ottieniCCRequest" message="tns:ottieniCC"/>
+<output wsam:Action="http://WebService/WSPaziente/ottieniCCResponse" message="tns:ottieniCCResponse"/>
+</operation>
+<operation name="ottieniPM">
+<input wsam:Action="http://WebService/WSPaziente/ottieniPMRequest" message="tns:ottieniPM"/>
+<output wsam:Action="http://WebService/WSPaziente/ottieniPMResponse" message="tns:ottieniPMResponse"/>
 </operation>
 <operation name="create">
 <input wsam:Action="http://WebService/WSPaziente/create" message="tns:create"/>
@@ -99,9 +125,13 @@
 <input wsam:Action="http://WebService/WSPaziente/effettuaLoginRequest" message="tns:effettuaLogin"/>
 <output wsam:Action="http://WebService/WSPaziente/effettuaLoginResponse" message="tns:effettuaLoginResponse"/>
 </operation>
-<operation name="verificaCF">
-<input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
-<output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
+<operation name="trovaPazienti">
+<input wsam:Action="http://WebService/WSPaziente/trovaPazientiRequest" message="tns:trovaPazienti"/>
+<output wsam:Action="http://WebService/WSPaziente/trovaPazientiResponse" message="tns:trovaPazientiResponse"/>
+</operation>
+<operation name="ottieniMultimedia">
+<input wsam:Action="http://WebService/WSPaziente/ottieniMultimediaRequest" message="tns:ottieniMultimedia"/>
+<output wsam:Action="http://WebService/WSPaziente/ottieniMultimediaResponse" message="tns:ottieniMultimediaResponse"/>
 </operation>
 </portType>
 <binding name="WSPazientePortBinding" type="tns:WSPaziente">
@@ -115,7 +145,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="trovaPazienti">
+<operation name="verificaCF">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ottieniCC">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ottieniPM">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -187,7 +235,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="verificaCF">
+<operation name="trovaPazienti">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ottieniMultimedia">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

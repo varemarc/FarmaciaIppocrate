@@ -61,13 +61,12 @@
 <xs:element name="cognome" type="xs:string" minOccurs="0"/>
 <xs:element name="data_nascita" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="miePrestazioni" type="tns:prestazioneMedico" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="nome" type="xs:string" minOccurs="0"/>
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="pin_code" type="xs:string" minOccurs="0"/>
+<xs:element name="prestazioniEffettuabili" type="tns:prestazioneMedico" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="specializzazione" type="xs:string" minOccurs="0"/>
 <xs:element name="username" type="xs:string" minOccurs="0"/>
-<xs:element name="visite" type="tns:agenda" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -89,18 +88,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="agenda">
-<xs:sequence>
-<xs:element name="client_id" type="xs:string" minOccurs="0"/>
-<xs:element name="developer_key" type="xs:string" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="id_calendario" type="xs:string" minOccurs="0"/>
-<xs:element name="nome_utente" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-<xs:element name="secret_key" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="paziente">
 <xs:sequence>
 <xs:element name="cartella_clinica" type="tns:cartellaClinica" minOccurs="0"/>
@@ -114,7 +101,6 @@
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="reparto_ricoverato" type="tns:reparto" minOccurs="0"/>
 <xs:element name="sesso" type="xs:string" minOccurs="0"/>
-<xs:element name="studioMedico" type="tns:studioMedico" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -164,7 +150,6 @@
 
 <xs:complexType name="sala">
 <xs:sequence>
-<xs:element name="agenda" type="tns:agenda" minOccurs="0"/>
 <xs:element name="id" type="xs:long" minOccurs="0"/>
 <xs:element name="lista_prestazioni" type="tns:prestazioneSala" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="medico_responsabile" type="tns:medico" minOccurs="0"/>
@@ -189,7 +174,6 @@
 <xs:extension base="tns:strutturaMedica">
 <xs:sequence>
 <xs:element name="lista_medici" type="tns:medicoEsterno" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-<xs:element name="lista_pazienti" type="tns:paziente" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 <xs:element name="lista_sale" type="tns:sala" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:extension>

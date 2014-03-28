@@ -4,23 +4,23 @@
 <xsd:import namespace="http://WebService/" schemaLocation="http://localhost:8080/WSPrescrizioneMedica/WSPrescrizioneMedica?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getPMTransient">
-<part name="parameters" element="tns:getPMTransient"/>
-</message>
-<message name="getPMTransientResponse">
-<part name="parameters" element="tns:getPMTransientResponse"/>
-</message>
 <message name="segnaConsegnata">
 <part name="parameters" element="tns:segnaConsegnata"/>
 </message>
 <message name="segnaConsegnataResponse">
 <part name="parameters" element="tns:segnaConsegnataResponse"/>
 </message>
-<message name="remove">
-<part name="parameters" element="tns:remove"/>
+<message name="getPMTransient">
+<part name="parameters" element="tns:getPMTransient"/>
+</message>
+<message name="getPMTransientResponse">
+<part name="parameters" element="tns:getPMTransientResponse"/>
 </message>
 <message name="edit">
 <part name="parameters" element="tns:edit"/>
+</message>
+<message name="create">
+<part name="parameters" element="tns:create"/>
 </message>
 <message name="findAll">
 <part name="parameters" element="tns:findAll"/>
@@ -28,14 +28,14 @@
 <message name="findAllResponse">
 <part name="parameters" element="tns:findAllResponse"/>
 </message>
-<message name="create">
-<part name="parameters" element="tns:create"/>
-</message>
 <message name="find">
 <part name="parameters" element="tns:find"/>
 </message>
 <message name="findResponse">
 <part name="parameters" element="tns:findResponse"/>
+</message>
+<message name="remove">
+<part name="parameters" element="tns:remove"/>
 </message>
 <message name="findRange">
 <part name="parameters" element="tns:findRange"/>
@@ -50,30 +50,30 @@
 <part name="parameters" element="tns:countResponse"/>
 </message>
 <portType name="WSPrescrizioneMedica">
-<operation name="getPMTransient">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/getPMTransientRequest" message="tns:getPMTransient"/>
-<output wsam:Action="http://WebService/WSPrescrizioneMedica/getPMTransientResponse" message="tns:getPMTransientResponse"/>
-</operation>
 <operation name="segnaConsegnata">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/segnaConsegnataRequest" message="tns:segnaConsegnata"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/segnaConsegnataResponse" message="tns:segnaConsegnataResponse"/>
 </operation>
-<operation name="remove">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/remove" message="tns:remove"/>
+<operation name="getPMTransient">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/getPMTransientRequest" message="tns:getPMTransient"/>
+<output wsam:Action="http://WebService/WSPrescrizioneMedica/getPMTransientResponse" message="tns:getPMTransientResponse"/>
 </operation>
 <operation name="edit">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/edit" message="tns:edit"/>
+</operation>
+<operation name="create">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/create" message="tns:create"/>
 </operation>
 <operation name="findAll">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findAllRequest" message="tns:findAll"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/findAllResponse" message="tns:findAllResponse"/>
 </operation>
-<operation name="create">
-<input wsam:Action="http://WebService/WSPrescrizioneMedica/create" message="tns:create"/>
-</operation>
 <operation name="find">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findRequest" message="tns:find"/>
 <output wsam:Action="http://WebService/WSPrescrizioneMedica/findResponse" message="tns:findResponse"/>
+</operation>
+<operation name="remove">
+<input wsam:Action="http://WebService/WSPrescrizioneMedica/remove" message="tns:remove"/>
 </operation>
 <operation name="findRange">
 <input wsam:Action="http://WebService/WSPrescrizioneMedica/findRangeRequest" message="tns:findRange"/>
@@ -86,15 +86,6 @@
 </portType>
 <binding name="WSPrescrizioneMedicaPortBinding" type="tns:WSPrescrizioneMedica">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getPMTransient">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="segnaConsegnata">
 <soap:operation soapAction=""/>
 <input>
@@ -104,13 +95,22 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="remove">
+<operation name="getPMTransient">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="edit">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
 </input>
 </operation>
-<operation name="edit">
+<operation name="create">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -125,12 +125,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="create">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-</operation>
 <operation name="find">
 <soap:operation soapAction=""/>
 <input>
@@ -139,6 +133,12 @@
 <output>
 <soap:body use="literal"/>
 </output>
+</operation>
+<operation name="remove">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
 </operation>
 <operation name="findRange">
 <soap:operation soapAction=""/>

@@ -30,15 +30,13 @@
 
 <xs:element name="segnaConsegnataResponse" type="tns:segnaConsegnataResponse"/>
 
-<xs:complexType name="find">
-<xs:sequence>
-<xs:element name="id" type="xs:anyType" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="findAll">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="findResponse">
+<xs:complexType name="findAllResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0"/>
+<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -209,13 +207,15 @@
 </xs:complexContent>
 </xs:complexType>
 
-<xs:complexType name="findAll">
-<xs:sequence/>
+<xs:complexType name="find">
+<xs:sequence>
+<xs:element name="id" type="xs:anyType" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAllResponse">
+<xs:complexType name="findResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:prescrizioneMedica" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

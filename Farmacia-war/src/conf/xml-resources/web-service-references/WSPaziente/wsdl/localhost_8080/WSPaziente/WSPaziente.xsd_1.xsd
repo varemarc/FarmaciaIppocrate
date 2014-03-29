@@ -342,18 +342,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="ottieniCC">
-<xs:sequence>
-<xs:element name="idPaziente" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ottieniCCResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="effettuaLogin">
 <xs:sequence>
 <xs:element name="username" type="xs:string" minOccurs="0"/>
@@ -363,6 +351,18 @@
 </xs:complexType>
 
 <xs:complexType name="effettuaLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ottieniCC">
+<xs:sequence>
+<xs:element name="idPaziente" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ottieniCCResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

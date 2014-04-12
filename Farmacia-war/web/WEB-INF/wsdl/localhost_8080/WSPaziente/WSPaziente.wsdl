@@ -49,6 +49,18 @@
 <message name="trovaPazientiResponse">
 <part name="parameters" element="tns:trovaPazientiResponse"/>
 </message>
+<message name="ottieniMultimedia">
+<part name="parameters" element="tns:ottieniMultimedia"/>
+</message>
+<message name="ottieniMultimediaResponse">
+<part name="parameters" element="tns:ottieniMultimediaResponse"/>
+</message>
+<message name="getPazienteTransient">
+<part name="parameters" element="tns:getPazienteTransient"/>
+</message>
+<message name="getPazienteTransientResponse">
+<part name="parameters" element="tns:getPazienteTransientResponse"/>
+</message>
 <message name="verificaCF">
 <part name="parameters" element="tns:verificaCF"/>
 </message>
@@ -66,18 +78,6 @@
 </message>
 <message name="ottieniPMResponse">
 <part name="parameters" element="tns:ottieniPMResponse"/>
-</message>
-<message name="ottieniMultimedia">
-<part name="parameters" element="tns:ottieniMultimedia"/>
-</message>
-<message name="ottieniMultimediaResponse">
-<part name="parameters" element="tns:ottieniMultimediaResponse"/>
-</message>
-<message name="getPazienteTransient">
-<part name="parameters" element="tns:getPazienteTransient"/>
-</message>
-<message name="getPazienteTransientResponse">
-<part name="parameters" element="tns:getPazienteTransientResponse"/>
 </message>
 <portType name="WSPaziente">
 <operation name="create">
@@ -113,6 +113,14 @@
 <input wsam:Action="http://WebService/WSPaziente/trovaPazientiRequest" message="tns:trovaPazienti"/>
 <output wsam:Action="http://WebService/WSPaziente/trovaPazientiResponse" message="tns:trovaPazientiResponse"/>
 </operation>
+<operation name="ottieniMultimedia">
+<input wsam:Action="http://WebService/WSPaziente/ottieniMultimediaRequest" message="tns:ottieniMultimedia"/>
+<output wsam:Action="http://WebService/WSPaziente/ottieniMultimediaResponse" message="tns:ottieniMultimediaResponse"/>
+</operation>
+<operation name="getPazienteTransient">
+<input wsam:Action="http://WebService/WSPaziente/getPazienteTransientRequest" message="tns:getPazienteTransient"/>
+<output wsam:Action="http://WebService/WSPaziente/getPazienteTransientResponse" message="tns:getPazienteTransientResponse"/>
+</operation>
 <operation name="verificaCF">
 <input wsam:Action="http://WebService/WSPaziente/verificaCFRequest" message="tns:verificaCF"/>
 <output wsam:Action="http://WebService/WSPaziente/verificaCFResponse" message="tns:verificaCFResponse"/>
@@ -124,14 +132,6 @@
 <operation name="ottieniPM">
 <input wsam:Action="http://WebService/WSPaziente/ottieniPMRequest" message="tns:ottieniPM"/>
 <output wsam:Action="http://WebService/WSPaziente/ottieniPMResponse" message="tns:ottieniPMResponse"/>
-</operation>
-<operation name="ottieniMultimedia">
-<input wsam:Action="http://WebService/WSPaziente/ottieniMultimediaRequest" message="tns:ottieniMultimedia"/>
-<output wsam:Action="http://WebService/WSPaziente/ottieniMultimediaResponse" message="tns:ottieniMultimediaResponse"/>
-</operation>
-<operation name="getPazienteTransient">
-<input wsam:Action="http://WebService/WSPaziente/getPazienteTransientRequest" message="tns:getPazienteTransient"/>
-<output wsam:Action="http://WebService/WSPaziente/getPazienteTransientResponse" message="tns:getPazienteTransientResponse"/>
 </operation>
 </portType>
 <binding name="WSPazientePortBinding" type="tns:WSPaziente">
@@ -208,6 +208,24 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="ottieniMultimedia">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getPazienteTransient">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="verificaCF">
 <soap:operation soapAction=""/>
 <input>
@@ -227,24 +245,6 @@
 </output>
 </operation>
 <operation name="ottieniPM">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="ottieniMultimedia">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getPazienteTransient">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
